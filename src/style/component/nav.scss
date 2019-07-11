@@ -1,0 +1,72 @@
+nav {
+    border-bottom: 1px solid $opa-black;
+    position: fixed;
+    width: 100%;
+    background: white;
+    z-index: 999;
+
+    .wrapper {
+        height: 70px;
+        display: flex;
+        justify-content: space-between;
+        padding: 0 20px;
+        align-items: center;
+    }
+
+    .logo {
+        font-size: 40px;
+        margin-top: 5px;
+    }
+
+    .menu {
+        display: flex;
+        align-items: center;
+
+        li {
+            a {
+                display: block;
+                transition: 0.2s;
+            }
+
+            &.create a {
+                background: $green;
+                background: white;
+                color: $green;
+                padding: 12px 40px;
+                border-radius: 40px;
+                border: 2px solid $green;
+                display: flex;
+                align-items: center;
+
+                &:hover {
+                    background: $green;
+                    color: white;
+                }
+
+                svg {
+                    margin-right: 5px;
+                    font-size: 1.3em;
+                }
+            }
+
+            &.profile a {
+                width: 45px;
+                height: 45px;
+
+                background: white;
+                color: $pink;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-radius: 50%;
+                margin-left: 20px;
+                border: 2px solid $pink;
+
+                &:hover {
+                    background: $pink;
+                    color: white;
+                }
+            }
+        }
+    }
+}

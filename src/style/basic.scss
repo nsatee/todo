@@ -1,0 +1,29 @@
+body {
+    color: #292929;
+}
+
+.main > .wrapper {
+    padding: 70px 0px 0px 0px;
+}
+
+.wrapper {
+    max-width: 960px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.main-header {
+    font-size: 4em;
+}
+
+a {
+    color: $green;
+}
+
+button {
+    background: white;
+    box-shadow: 0;
+    border: 0;
+    font-size: 14px;
+    cursor: pointer;
+}
