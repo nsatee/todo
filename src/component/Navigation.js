@@ -33,7 +33,9 @@ export const LoginForm = () => {
                 </a>
             </div>
             <form className="login-form">
-                <input type="text" />
+                <input type="text" placeholder="Email"/>
+                <input type="password" placeholder="Password"/>
+                <button type="submit" className="btn btn-green">Signin</button>
             </form>
         </div>
     )
