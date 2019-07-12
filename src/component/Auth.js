@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { FiUnderline } from "react-icons/fi";
 
 class Auth extends Component {
     render() {
