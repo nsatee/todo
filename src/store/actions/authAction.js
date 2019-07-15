@@ -13,12 +13,32 @@ export const signIn = (credentials) => {
     }
 }
 
-export const signOut = () => {
+export const signOut = (history) => {
     return (dispatch, getState, { getFirebase }) => {
         const firebase = getFirebase();
-
         firebase.auth().signOut().then(() => {
             dispatch({ type: 'SIGNOUT_SUCCESS' });
         });
+    }
+}
+
+export const signUp = (newUser) => {
+    return (dispatch, getState, { getFirebase, getFirestore }) => {
+        const firebase = getFirebase();
+        const firestore = getFirestore();
+
+        firebase.auth().createUserWithEmailAndPassword(
+            newUser.email,
+            newUser.password
+        ).then((res) => {
+            return firestore.collection('users').doc(res.user.uid).set({
+                username: newUser.username
+            })
+        }).then((res) => {
+            console.log(res);
+            dispatch({ type: 'SIGNUP_SUCCESS', payload: res.user });
+        }).catch(err => {
+            dispatch({ type: 'SIGNUP_ERROR', err })
+        })
     }
 }

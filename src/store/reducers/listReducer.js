@@ -1,11 +1,16 @@
 const initState = {
-    list: [
-       {id: 1, listName: "Coding"} 
-    ]
+    errMsg: null,
+    isLoaded: false
 }
 
 const listReducer = (state = initState, action) => {
-    return state;
+    switch(action.type) {
+        case "CREATE_LIST_SUCCESS":
+            console.log('woohoo');
+            return {...state, isLoaded: true}
+        default:
+            return state;
+    }
 }
 
 export default listReducer;

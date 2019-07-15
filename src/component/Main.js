@@ -1,31 +1,46 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
 
 import Navigation from './Navigation';
 import ListContainer from './list/ListContainer';
 import ItemContainer from './item/ItemContainer';
 import Auth from './Auth';
+import CreateList from './createList/CreateList';
 
 class Main extends Component {
+    state = {
+        createListPop: false
+    }
+
+    createListPopHandler = () => {
+        this.setState({ createListPop: !this.state.createListPop })
+    }
+
+
     render() {
         const { isLoaded, notSignedIn, authInfo } = this.props;
-        console.log(isLoaded, notSignedIn, authInfo);
-        if(!isLoaded) return <h1>Loading</h1>
+        if (!isLoaded) return <h1>Loading</h1>
 
         return (
-            <div className="main">
-                <Navigation notSignedIn={notSignedIn} authInfo={authInfo}/>
-                {notSignedIn ? (
-                    <div className="wrapper main-wrapper">
-                        <Auth />
-                    </div>
-                ) : (
-                    <div className="wrapper main-wrapper">
-                        <ListContainer />
-                        <ItemContainer />
-                    </div>
-                )}
-            </div>
+            <BrowserRouter>
+                <div className="main">
+                    <Navigation notSignedIn={notSignedIn} authInfo={authInfo} pop={this.createListPopHandler} />
+                    {notSignedIn ? (
+                        <div className="wrapper main-wrapper">
+                            <Auth />
+                        </div>
+                    ) : (
+
+                            <div className="wrapper main-wrapper">
+                                {this.state.createListPop ? <CreateList pop={this.createListPopHandler} authInfo={authInfo} /> : null}
+                                <ListContainer />
+                                <ItemContainer />
+                            </div>
+
+                        )}
+                </div>
+            </BrowserRouter>
         )
     }
 }
@@ -38,6 +53,6 @@ const mapStateToProp = state => {
         notSignedIn: state.firebase.auth.isEmpty,
         isLoaded: state.firebase.auth.isLoaded,
     }
-} 
+}
 
 export default connect(mapStateToProp)(Main);

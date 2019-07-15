@@ -1,6 +1,25 @@
 import React, { Component } from 'react';
+import {connect} from 'react-redux';
+import { signUp } from '../store/actions/authAction';
 
 class Auth extends Component {
+    state = {
+        email: '',
+        password: '',
+        repassword: '',
+        username: ''
+    }
+
+    handleChange = (e) => {
+        this.setState({
+            [e.target.id]: e.target.value
+        })
+    }
+
+    handleSubmit = (e) => {
+        e.preventDefault();
+        this.props.signUp(this.state);
+    }
     render() {
         return (
             <div className="auth">
@@ -11,11 +30,11 @@ class Auth extends Component {
                 </div>
                 <div className="section auth-signup">
                     <h1 className="header">Signup</h1>
-                    <form className="auth-signup_form">
-                        <input type="text" name="email" placeholder="Email"/>
-                        <input type="text" name="username" placeholder="Username"/>
-                        <input type="password" name="password" placeholder="Password"/>
-                        <input type="password" name="repassword" placeholder="Confirm password"/>
+                    <form className="auth-signup_form" onSubmit={this.handleSubmit}>
+                        <input type="text" id="email" placeholder="Email" onChange={this.handleChange} />
+                        <input type="text" id="username" placeholder="Username" onChange={this.handleChange} />
+                        <input type="password" id="password" placeholder="Password" onChange={this.handleChange} />
+                        <input type="password" id="repassword" placeholder="Confirm password" onChange={this.handleChange} />
                         <button type="submit" className="auth-signup_submit btn btn-green">Signup</button>
                     </form>
                 </div>
@@ -24,5 +43,12 @@ class Auth extends Component {
     }
 }
 
+const mapDispatchToProps = dispatch => {
+    return {
+        signUp: (newUser) => dispatch(signUp(newUser))
+    }
+}
 
-export default Auth;
+
+
+export default connect(null, mapDispatchToProps)(Auth);

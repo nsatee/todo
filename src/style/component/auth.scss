@@ -17,7 +17,7 @@
         margin-top: -80px;
 
         .auth-logo_wrapper {
-            font-size: 12vw;
+            font-size: calc(4vw + 4vh + 2vmin);
             color: $blue;
             span {
                 color: $pink;
@@ -32,7 +32,7 @@
         align-items: flex-start;
         margin-top: -100px;
         .header {
-            font-size: 8vw;
+            font-size: calc(3vw + 3vh + 1vmin);
             margin-bottom: 60px;
         }
 

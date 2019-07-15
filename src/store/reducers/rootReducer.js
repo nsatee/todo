@@ -8,7 +8,7 @@ import listReducer from './listReducer';
 const rootReducer = combineReducers({
     auth: authReducer,
     lists: listReducer,
-    firestoreReducer: firestoreReducer,
+    firestore: firestoreReducer,
     firebase: firebaseReducer
 })
 
