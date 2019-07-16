@@ -28,12 +28,16 @@ nav {
         align-items: center;
 
         li {
-            a {
+            &:hover .dropdown {
+                display: block !important;
+            }
+
+            > a {
                 display: block;
                 transition: 0.2s;
             }
 
-            &.create a {
+            &.create > a {
                 background: $green;
                 background: white;
                 color: $green;
@@ -54,7 +58,7 @@ nav {
                 }
             }
 
-            &.profile a {
+            &.profile > a {
                 width: 45px;
                 height: 45px;
 
@@ -71,6 +75,34 @@ nav {
                     background: $pink;
                     color: white;
                 }
+            }
+        }
+    }
+}
+
+.dropdown {
+    background: white;
+    border: 1px solid $opa-black;
+    position: absolute;
+    right: 0;
+    display: none;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    overflow: hidden;
+
+    li {
+        min-width: 120px;
+        border-bottom: 1px solid $opa-black;
+
+        &:last-child {
+            border-bottom: 0;
+        }
+        a {
+            display: block;
+            padding: 10px;
+            color: $black;
+            &:hover {
+                background: $opa-black;
             }
         }
     }
