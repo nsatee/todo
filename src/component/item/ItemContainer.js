@@ -61,7 +61,7 @@ class ItemContainer extends Component {
                     }
                 </div>
                 <ul className="item-content">
-                    {this.props.items.map(item => <Item isDone={item.isDone} itemTitle={item.itemContent} key={item.id}/>)}
+                    {this.props.items.map(item => <Item isDone={item.isDone} itemTitle={item.itemContent} key={item.id} itemId={item.id}/>)}
                 </ul>
             </div>
         )

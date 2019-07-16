@@ -28,3 +28,14 @@ export const createItem = (itemInfo) => {
         })
     }
 }
+
+export const checkItem = (itemId, status) => {
+    return (dispatch, getState, {getFirestore}) => {
+        const firestore = getFirestore();
+        firestore.collection('items').doc(itemId).update({
+            isDone: !status
+        }).then(() => {
+            dispatch({type: 'CHECK_UPDATE'});
+        })
+    }
+}

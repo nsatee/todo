@@ -1,16 +1,14 @@
 import React, { Component } from 'react';
+import { checkItem } from '../../store/actions/listAction'
+import { connect } from 'react-redux';
 
 class Item extends Component {
-    state = {
-        isDone: this.props.isDone
-    }
-
     render() {
         return (
             <li className="item">
-                <button onClick={() => this.setState({ isDone: !this.state.isDone })}>
+                <button onClick={() => this.props.checkToggle(this.props.itemId, this.props.isDone)}>
                     <span className="checkbox">
-                        {this.state.isDone ? <span className="check"></span> : null}
+                        {this.props.isDone ? <span className="check"></span> : null}
                     </span>
                     <span className="item-title">{this.props.itemTitle}</span>
                 </button>
@@ -19,4 +17,8 @@ class Item extends Component {
     }
 }
 
-export default Item;
+const mapDispatchtoProps = dispatch => {
+    return { checkToggle: (itemId, status) => dispatch(checkItem(itemId, status)) }
+}
+
+export default connect(null, mapDispatchtoProps)(Item);
