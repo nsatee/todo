@@ -23,7 +23,6 @@
         border-bottom: 1px solid $opa-black;
     }
 
-
     .list button {
         font-size: 1.3em;
         width: 100%;
@@ -31,19 +30,102 @@
         padding: 30px 20px;
         border-bottom: 1px solid $opa-black;
 
-        &:hover {
+        &:hover, &.selected {
             background: rgba(0, 0, 0, 0.1);
         }
     }
 }
 
 .item-container {
-    padding: 30px 10px 0px 10px;
-    overflow: scroll;
     border-right: 1px solid $opa-black;
+    position: relative;
+
+    .item-action {
+        background: white;
+        border-bottom: 1px solid $opa-black;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px;
+        flex-wrap: wrap;
+        position: absolute;
+        width: 100%;
+        min-height: 70px;
+
+        .add-item-input {
+            width: 100%;
+            margin-top: 10px;
+            display: flex;
+
+            .add-item-form {
+                width: 100%;
+                display: flex;
+                align-items: flex-end;
+                flex-direction: column;
+            }
+            input {
+                box-sizing: border-box;
+                width: 100%;
+                border: 2px solid $pink;
+                color: $pink;
+                padding: 15px 20px;
+            }
+
+            .add-action {
+                width: 100%;
+                display: flex;
+                justify-content: flex-end;
+                margin-top: 10px;
+                button, span {
+                    width: 30px;
+                    height: 30px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    margin-left: 10px;
+                    border-radius: 50%;
+
+                    &.yes {
+                        border: 2px solid $green;
+                        color: $green;
+                    }
+
+                    &.no {
+                        border: 2px solid $red;
+                        color: $red;
+                    }
+                }
+            }
+        }
+
+        .add {
+            width: 40px;
+            height: 40px;
+            background: $green;
+            border-radius: 50%;
+            color: white;
+            font-size: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            &.false {
+                opacity: .5;
+                cursor: inherit;
+            }
+        }
+    }
+
+    .item-content {
+        padding: 20px;
+        min-height: calc(100vh - 140px);
+        overflow: scroll;
+        margin-top: 70px;
+    }
 
     .item {
         margin-bottom: 15px;
+
         button {
             border: 2px solid $pink;
             width: 100%;

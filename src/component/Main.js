@@ -10,11 +10,17 @@ import CreateList from './createList/CreateList';
 
 class Main extends Component {
     state = {
-        createListPop: false
+        createListPop: false,
+        selectedList: null
     }
 
     createListPopHandler = () => {
         this.setState({ createListPop: !this.state.createListPop })
+    }
+
+    handleSelectedList = (listId) => {
+        this.setState({ selectedList: listId});
+        console.log(listId);
     }
 
 
@@ -34,8 +40,8 @@ class Main extends Component {
 
                             <div className="wrapper main-wrapper">
                                 {this.state.createListPop ? <CreateList pop={this.createListPopHandler} authInfo={authInfo} /> : null}
-                                <ListContainer />
-                                <ItemContainer />
+                                <ListContainer handleSelectedList={this.handleSelectedList}/>
+                                <ItemContainer selectedList={this.state.selectedList}/>
                             </div>
 
                         )}

@@ -5,6 +5,15 @@ import { firestoreConnect, isLoaded } from 'react-redux-firebase';
 import { compose } from 'redux';
 
 class ListContainer extends Component {
+    state = {
+        selectedItem: null
+    }
+
+    selectedItem = (listId) => {
+        this.setState({selectedItem: listId});
+        this.props.handleSelectedList(listId);
+    }
+
     render() {
         const { lists } = this.props;
         return (
@@ -12,7 +21,16 @@ class ListContainer extends Component {
                 <h1 className="main-header">List</h1>
                 <ul className="list-content">
                     {
-                        lists.map(list => <List key={list.id} listTitle={list.listName} />)
+                        lists.map(
+                            list => <List 
+                            key={list.id} 
+                            listTitle={list.listName} 
+                            listId={list.id}
+                            selected={
+                                list.id == this.state.selectedItem
+                            } 
+                            selectedItem={this.selectedItem}/>
+                        )
                     }
                 </ul>
             </div>
