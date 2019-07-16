@@ -17,7 +17,6 @@ class CreateList extends Component {
     }
 
     render() {
-        console.log(this.props)
         return (
             <div className="create-list">
                 <div className="fade-cover"></div>

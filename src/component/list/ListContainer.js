@@ -16,7 +16,6 @@ class ListContainer extends Component {
 
     render() {
         const { lists } = this.props;
-        console.log(lists)
         return (
             <div className="section list-container">
                 <h1 className="main-header">List</h1>
@@ -53,7 +52,7 @@ export default compose(
         return [{ 
             collection: 'lists', 
             where: [['creator', '==', props.auth.uid]],
-            // orderBy: ["createdAt", "desc"]
+            orderBy: ["createdAt", "desc"]
         }]
     }),
 )(ListContainer);

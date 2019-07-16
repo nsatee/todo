@@ -11,7 +11,6 @@ class List extends Component {
         pop: false
     }
     render() {
-        console.log(this.props);
         return (
             <li className="list">
                 {this.state.pop ?
