@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 class Item extends Component {
     render() {
         return (
-            <li className="item">
+            <li className={`item ${this.props.isDone ? "done" : "notdone"}`}>
                 <button onClick={() => this.props.checkToggle(this.props.itemId, this.props.isDone)}>
                     <span className="checkbox">
                         {this.props.isDone ? <span className="check"></span> : null}

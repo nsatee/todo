@@ -30,7 +30,8 @@
         padding: 30px 20px;
         border-bottom: 1px solid $opa-black;
 
-        &:hover, &.selected {
+        &:hover,
+        &.selected {
             background: rgba(0, 0, 0, 0.1);
         }
     }
@@ -51,6 +52,12 @@
         position: absolute;
         width: 100%;
         min-height: 70px;
+
+        .show-action {
+            button.active {
+                color: $pink;
+            }
+        }
 
         .add-item-input {
             width: 100%;
@@ -76,7 +83,8 @@
                 display: flex;
                 justify-content: flex-end;
                 margin-top: 10px;
-                button, span {
+                button,
+                span {
                     width: 30px;
                     height: 30px;
                     display: flex;
@@ -110,7 +118,7 @@
             align-items: center;
 
             &.false {
-                opacity: .5;
+                opacity: 0.5;
                 cursor: inherit;
             }
         }
@@ -163,6 +171,27 @@
                 background: $pink;
                 color: white;
             }
+        }
+    }
+}
+
+//filter
+.item-container {
+    &.notdone {
+        .item.notdone {
+            display: none;
+        }
+    }
+
+    &.done {
+        .item.done {
+            display: none;
+        }
+    }
+
+    &.all {
+        .item {
+            display: block;
         }
     }
 }

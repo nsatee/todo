@@ -13,12 +13,24 @@ class Menu extends Component {
                     <span><FiUnderline /></span>
                 </a>
                 <ul className="menu">
-                    <li><button onClick={() => this.props.signOut(this.props.history)}>signout</button></li>
                     <li className="create"><a href="/" onClick={(e) => { e.preventDefault(); this.props.pop() }}><FiList /><span>Create</span></a></li>
-                    <li className="profile"><a href="/"><span>{this.props.authInfo.email[0]}</span></a></li>
+                    <li className="profile">
+                        <a href="/">
+                            <span>{this.props.profile.username[0].toUpperCase()}</span>
+                        </a>
+                        <ul className="dropdown">
+                            <li><a onClick={(e) => {e.preventDefault(); this.props.signOut();}}>signout</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
         )
+    }
+}
+
+const mapStateToProps = ({firebase: {profile}}) => {
+    return {
+        profile
     }
 }
 
@@ -30,5 +42,5 @@ const mapDispatchToProps = (dispatch) => {
 
 export default compose(
     withRouter,
-    connect(null, mapDispatchToProps),
+    connect(mapStateToProps, mapDispatchToProps),
     )(Menu);

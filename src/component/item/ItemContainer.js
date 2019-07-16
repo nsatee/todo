@@ -9,7 +9,8 @@ import {firestoreConnect} from 'react-redux-firebase';
 class ItemContainer extends Component {
     state = {
         addNewItemPop: false,
-        itemInput: ""
+        itemInput: "",
+        filter: "all",
     }
 
     handleCreatingItem = (e) => {
@@ -23,14 +24,13 @@ class ItemContainer extends Component {
     }
 
     render() {
-        console.log(this.props.selectedList);
         return (
-            <div className="section item-container">
+            <div className={`section item-container ${this.state.filter}`}>
                 <div className="item-action">
                     <div className="show-action">
-                        <button className="show-all">All</button>
-                        <button className="show-done">Completing</button>
-                        <button className="show-undone">Completed</button>
+                        <button className={`show-all ${this.state.filter === 'all' ? 'active' : ''}`} onClick={() => this.setState({filter: "all"})}>All</button>
+                        <button className={`show-done  ${this.state.filter === 'done' ? 'active' : ''}`} onClick={() => this.setState({filter: "done"})}>Completing</button>
+                        <button className={`show-notdone  ${this.state.filter === 'notdone' ? 'active' : ''}`} onClick={() => this.setState({filter: "notdone"})}>Completed</button>
                     </div>
                     <button className={`add ${this.props.selectedList !== null}`} 
                         onClick={() => {

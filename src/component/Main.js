@@ -25,13 +25,13 @@ class Main extends Component {
 
 
     render() {
-        const { isLoaded, notSignedIn, authInfo } = this.props;
-        if (!isLoaded) return <h1>Loading</h1>
+        const { notSignedIn, authInfo, profile } = this.props;
+        if (!profile.isLoaded) return <h1>Loading</h1>
 
         return (
             <BrowserRouter>
                 <div className="main">
-                    <Navigation notSignedIn={notSignedIn} authInfo={authInfo} pop={this.createListPopHandler} />
+                    <Navigation notSignedIn={notSignedIn} authInfo={authInfo} pop={this.createListPopHandler} profile={profile}/>
                     {notSignedIn ? (
                         <div className="wrapper main-wrapper">
                             <Auth />
@@ -58,6 +58,7 @@ const mapStateToProp = state => {
         authInfo: state.firebase.auth,
         notSignedIn: state.firebase.auth.isEmpty,
         isLoaded: state.firebase.auth.isLoaded,
+        profile: state.firebase.profile
     }
 }
 
