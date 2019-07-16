@@ -15,11 +15,11 @@ class Menu extends Component {
                 <ul className="menu">
                     <li className="create"><a href="/" onClick={(e) => { e.preventDefault(); this.props.pop() }}><FiList /><span>Create</span></a></li>
                     <li className="profile">
-                        <a href="/">
+                        <a href="/" onClick={(e)=>e.preventDefault()}>
                             <span>{this.props.profile.username[0].toUpperCase()}</span>
                         </a>
                         <ul className="dropdown-main">
-                            <li><a href="/" onClick={(e) => {e.preventDefault();}}>Profile</a></li>
+                            {/* <li><a href="/" onClick={(e) => {e.preventDefault();}}>Profile</a></li> */}
                             <li><a href="/" onClick={(e) => {e.preventDefault(); this.props.signOut();}}>Signout</a></li>
                         </ul>
                     </li>

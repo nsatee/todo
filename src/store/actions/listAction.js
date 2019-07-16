@@ -39,3 +39,12 @@ export const checkItem = (itemId, status) => {
         })
     }
 }
+
+export const deleteList = (itemId) => {
+    return (dispatch, getState, {getFirestore}) => {
+        const firestore = getFirestore();
+        firestore.collection('lists').doc(itemId).delete().then(() => {
+            dispatch({type: "DELETE_LIST"});
+        })
+    }
+}
