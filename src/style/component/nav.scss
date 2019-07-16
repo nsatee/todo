@@ -28,6 +28,7 @@ nav {
         align-items: center;
 
         li {
+            position: relative;
             &:hover .dropdown-main {
                 display: block !important;
             }
@@ -93,6 +94,8 @@ nav {
     li {
         min-width: 120px;
         border-bottom: 1px solid $opa-black;
+        display: block;
+        position: relative;
 
         &:last-child {
             border-bottom: 0;

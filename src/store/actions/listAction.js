@@ -9,13 +9,13 @@ export const createList = (list) => {
             createdAt: new Date()
         }).then(() => {
             console.log(list);
-            dispatch({type: "CREATE_LIST_SUCCESS", isLoaded: true, success: true});
+            dispatch({ type: "CREATE_LIST_SUCCESS", isLoaded: true, success: true });
         });
     }
 }
 
 export const createItem = (itemInfo) => {
-    return (dispatch, getState, {getFirestore}) => {
+    return (dispatch, getState, { getFirestore }) => {
         const firestore = getFirestore();
         firestore.collection('items').add({
             creator: itemInfo.creator,
@@ -24,27 +24,33 @@ export const createItem = (itemInfo) => {
             listId: itemInfo.listId,
             createdAt: new Date()
         }).then(() => {
-            dispatch({type: "CREATE_ITEM_SUCCESS"})
+            dispatch({ type: "CREATE_ITEM_SUCCESS" })
         })
     }
 }
 
 export const checkItem = (itemId, status) => {
-    return (dispatch, getState, {getFirestore}) => {
+    return (dispatch, getState, { getFirestore }) => {
         const firestore = getFirestore();
         firestore.collection('items').doc(itemId).update({
             isDone: !status
         }).then(() => {
-            dispatch({type: 'CHECK_UPDATE'});
+            dispatch({ type: 'CHECK_UPDATE' });
         })
     }
 }
 
-export const deleteList = (itemId) => {
-    return (dispatch, getState, {getFirestore}) => {
+export const deleteList = (listId) => {
+    return (dispatch, getState, { getFirestore }) => {
         const firestore = getFirestore();
-        firestore.collection('lists').doc(itemId).delete().then(() => {
-            dispatch({type: "DELETE_LIST"});
+        firestore.collection('lists').doc(listId).delete().then(() => {
+            const items = firestore.collection('items').where('listId', '==', listId);
+            items.get().then(function (snapshot) {
+                snapshot.forEach(function (doc) {
+                    doc.ref.delete();
+                });
+            });
+            dispatch({ type: "DELETE_LIST" });
         })
     }
 }
