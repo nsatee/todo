@@ -12,9 +12,34 @@
     border-right: 1px solid $opa-black;
     border-left: 1px solid $opa-black;
 
+    .actions {
+        padding: 0 10px;
+        position: absolute;
+        right: 0;
+
+        .icon:hover {
+            color: $yellow;
+        }
+
+        button {
+            font-size: .3em;
+        }
+    }
+
     .list-content {
         height: calc(100vh - 170px);
-        overflow: scroll;
+        overflow-y: scroll;
+
+        .info {
+            display: flex;
+            flex-direction: column;
+
+            .date {
+                color: rgba(0, 0, 0, 0.4);
+                font-size: .55em;
+                margin-top: 5px;
+            }
+        }
     }
 
     .main-header {
@@ -23,16 +48,54 @@
         border-bottom: 1px solid $opa-black;
     }
 
-    .list button {
+    .list a {
+        color: $black;
         font-size: 1.3em;
         width: 100%;
         text-align: left;
         padding: 30px 20px;
         border-bottom: 1px solid $opa-black;
+        display: flex;
+        justify-content: space-between;
+        position: relative;
+        cursor: pointer;
 
         &:hover,
         &.selected {
             background: rgba(0, 0, 0, 0.1);
+        }
+
+        .dropdown {
+            display: block;
+            border: 1px solid $opa-black;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            overflow: hidden;
+            position: absolute;
+            z-index: 999;
+            right: 0;
+            background: white;
+            min-width: 90px;
+        
+            .dropdown-list {
+                display: block;
+                border-bottom: 1px solid $opa-black;
+
+                &:last-child {
+                    border: 0;
+                }
+        
+                button {
+                    font-size: 14px;
+                    padding: 10px;
+                    width: 100%;
+                    text-align: left;
+
+                    &:hover {
+                        background: $opa-black;
+                    }
+                }
+            }
         }
     }
 }

@@ -32,7 +32,7 @@ class CreateList extends Component {
                             )}
                         />
                         <div className="create-action">
-                            <button className="no" onClick={() => this.props.pop()}><FiX />close</button>
+                            <a href="/" className="no" onClick={(e) => {e.preventDefault(); this.props.pop()}}><FiX />close</a>
                             <button type="submit" className="yes"><FiPlus />create</button>
                         </div>
                     </form>

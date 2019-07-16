@@ -28,7 +28,7 @@ nav {
         align-items: center;
 
         li {
-            &:hover .dropdown {
+            &:hover .dropdown-main {
                 display: block !important;
             }
 
@@ -80,7 +80,7 @@ nav {
     }
 }
 
-.dropdown {
+.dropdown-main {
     background: white;
     border: 1px solid $opa-black;
     position: absolute;

@@ -16,6 +16,7 @@ class ListContainer extends Component {
 
     render() {
         const { lists } = this.props;
+        console.log(lists)
         return (
             <div className="section list-container">
                 <h1 className="main-header">List</h1>
@@ -25,9 +26,10 @@ class ListContainer extends Component {
                             list => <List 
                             key={list.id} 
                             listTitle={list.listName} 
+                            date={list.createdAt.toDate()}
                             listId={list.id}
                             selected={
-                                list.id == this.state.selectedItem
+                                list.id === this.state.selectedItem
                             } 
                             selectedItem={this.selectedItem}/>
                         )
@@ -48,7 +50,10 @@ const mapStateToProps = ({ firebase: { auth }, firestore: { ordered } }) => {
 export default compose(
     connect(mapStateToProps),
     firestoreConnect(props => {
-        return [{ collection: 'lists', 
-        where: [['creator', '==', props.auth.uid]] }]
+        return [{ 
+            collection: 'lists', 
+            where: [['creator', '==', props.auth.uid]],
+            // orderBy: ["createdAt", "desc"]
+        }]
     }),
 )(ListContainer);

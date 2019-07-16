@@ -21,6 +21,7 @@
     .create-list_wrapper {
         position: relative;
         z-index: 999;
+        background: white;
     }
 
     .header {
@@ -42,7 +43,7 @@
         display: flex;
         justify-content: flex-end; 
 
-        button {
+        button, a {
             padding: 10px 25px;
             border-radius: 30px;
             display: flex;

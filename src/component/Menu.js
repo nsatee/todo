@@ -18,7 +18,7 @@ class Menu extends Component {
                         <a href="/">
                             <span>{this.props.profile.username[0].toUpperCase()}</span>
                         </a>
-                        <ul className="dropdown">
+                        <ul className="dropdown-main">
                             <li><a href="/" onClick={(e) => {e.preventDefault();}}>Profile</a></li>
                             <li><a href="/" onClick={(e) => {e.preventDefault(); this.props.signOut();}}>Signout</a></li>
                         </ul>
