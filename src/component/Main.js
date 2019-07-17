@@ -20,7 +20,6 @@ class Main extends Component {
 
     handleSelectedList = (listId) => {
         this.setState({ selectedList: listId});
-        console.log(listId);
     }
 
 
@@ -37,7 +36,6 @@ class Main extends Component {
                             <Auth />
                         </div>
                     ) : (
-
                             <div className="wrapper main-wrapper">
                                 {this.state.createListPop ? <CreateList pop={this.createListPopHandler} authInfo={authInfo} /> : null}
                                 <ListContainer handleSelectedList={this.handleSelectedList}/>
@@ -52,7 +50,6 @@ class Main extends Component {
 }
 
 const mapStateToProp = state => {
-    // console.log(state)
     return {
         auth: state.auth,
         authInfo: state.firebase.auth,

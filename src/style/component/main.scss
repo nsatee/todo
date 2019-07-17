@@ -15,8 +15,9 @@
     .delete-confirm {
         width: 100%;
         height: 100%;
-        background: rgba(255, 255, 255, 0.7);
+        background: white;
         display: block;
+        border-bottom: 1px solid $opa-black;
         position: absolute;
         top: 0;
         left: 0;
@@ -188,6 +189,7 @@
                     align-items: center;
                     margin-left: 10px;
                     border-radius: 50%;
+                    cursor: pointer;
 
                     &.yes {
                         border: 2px solid $green;
@@ -230,7 +232,7 @@
     .item {
         margin-bottom: 15px;
 
-        button {
+        a {
             border: 2px solid $pink;
             width: 100%;
             padding: 20px;
@@ -239,6 +241,7 @@
             color: $pink;
             display: flex;
             align-items: center;
+            
 
             //checkbox inside of item
             .checkbox {

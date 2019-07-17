@@ -44,6 +44,7 @@ class ItemContainer extends Component {
                                         placeholder="New item"
                                         onChange={(e) => this.setState({ itemInput: e.target.value })}
                                         value={this.state.itemInput}
+                                        autoFocus
                                     />
                                     <div className="add-action">
                                         <span className="no"

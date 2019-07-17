@@ -1,19 +1,22 @@
 import React, { Component } from 'react';
 import moment from 'moment';
 import { FiMoreVertical } from "react-icons/fi";
-import { deleteList } from '../../store/actions/listAction';
+import { deleteList, updateList } from '../../store/actions/listAction';
 import { connect } from 'react-redux';
 
 class List extends Component {
     state = {
         showAction: false,
         activeId: null,
-        pop: false
+        pop: false,
+        type: null,
+        title: this.props.listTitle
     }
     render() {
+        console.log(this.props);
         return (
             <li className="list">
-                {this.state.pop ?
+                {this.state.pop && this.state.type === "delete" && this.state.activeId === this.props.listId?
                     (<div className="list-pop">
                         <div className="delete-confirm">
                             <p className="msg">{`Delete ${this.props.listTitle} list?`}</p>
@@ -21,7 +24,7 @@ class List extends Component {
                                 <button className="no" onClick={() => this.setState({pop: false})}>Cancle</button>
                                 <button className="yes" 
                                     onClick={() => {
-                                        this.setState({pop: false})
+                                        this.setState({pop: false, type: ""})
                                         this.props.deleteList(this.props.listId)
                                     }}
                                     >
@@ -30,6 +33,25 @@ class List extends Component {
                             </div>
                         </div>
                     </div>) : null}
+
+                    {this.state.pop && this.state.type === "edit" && this.state.activeId === this.props.listId?
+                    (<div className="list-pop">
+                        <div className="delete-confirm">
+                            <input type="text" placeholder="List title" value={this.state.title} onChange={(e) => this.setState({title: e.target.value})} autoFocus/>
+                            <div className="delete-chices">
+                                <button className="yes" onClick={() => this.setState({pop: false, title: this.props.listTitle})}>Cancle</button>
+                                <button className="no" 
+                                    onClick={() => {
+                                        this.props.updateList(this.props.listId, this.state.title);
+                                        this.setState({pop: false, type: ""})
+                                    }}
+                                    >
+                                        Edit
+                                </button>
+                            </div>
+                        </div>
+                    </div>) : null}
+                
                 <a className={
                     this.props.selected ? "selected" : ""}
                     onClick={() => this.props.selectedItem(this.props.listId)}>
@@ -44,11 +66,11 @@ class List extends Component {
                         {
                             this.state.showAction && this.props.selected ? (
                                 <ul className="dropdown" onClick={() => this.setState({showAction: !this.state.showAction})}>
-                                    {/* <li className="dropdown-list">
-                                        <button>Edit</button>
-                                    </li> */}
                                     <li className="dropdown-list">
-                                        <button className="delete" onClick={() => this.setState({pop: true})}>Delete</button>
+                                        <button onClick={() => this.setState({pop: true, type: "edit"})}>Edit</button>
+                                    </li>
+                                    <li className="dropdown-list">
+                                        <button className="delete" onClick={() => this.setState({pop: true, type: "delete"})}>Delete</button>
                                     </li>
                                 </ul>
                             ) : null
@@ -63,7 +85,8 @@ class List extends Component {
 
 const mapDispatchToProps = dispatch => {
     return {
-        deleteList: (listId) => dispatch(deleteList(listId))
+        deleteList: (listId) => dispatch(deleteList(listId)),
+        updateList: (listId, name) => dispatch(updateList(listId, name))
     }
 }
 

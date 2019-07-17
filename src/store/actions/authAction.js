@@ -35,7 +35,6 @@ export const signUp = (newUser) => {
                 username: newUser.username
             })
         }).then((res) => {
-            console.log(res);
             dispatch({ type: 'SIGNUP_SUCCESS', payload: res.user });
         }).catch(err => {
             dispatch({ type: 'SIGNUP_ERROR', err })

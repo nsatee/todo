@@ -25,7 +25,7 @@ class Auth extends Component {
             <div className="auth">
                 <div className="section auth-logo">
                     <h1 className="auth-logo_wrapper">
-                        simplier with <br /><span>Udo</span>
+                        simpler with <br /><span>Udo</span>
                     </h1>
                 </div>
                 <div className="section auth-signup">

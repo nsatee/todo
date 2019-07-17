@@ -6,11 +6,11 @@ const initState = {
 const listReducer = (state = initState, action) => {
     switch(action.type) {
         case "CREATE_LIST_SUCCESS":
-            console.log('woohoo');
             return {...state, isLoaded: true}
         default:
             return state;
     }
 }
+
 
 export default listReducer;

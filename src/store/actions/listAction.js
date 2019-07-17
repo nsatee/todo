@@ -8,7 +8,6 @@ export const createList = (list) => {
             listName: list.listName,
             createdAt: new Date()
         }).then(() => {
-            console.log(list);
             dispatch({ type: "CREATE_LIST_SUCCESS", isLoaded: true, success: true });
         });
     }
@@ -51,6 +50,17 @@ export const deleteList = (listId) => {
                 });
             });
             dispatch({ type: "DELETE_LIST" });
+        })
+    }
+}
+
+export const updateList = (listId, newName) => {
+    return (dispatch, getState, { getFirestore }) => {
+        const firestore = getFirestore();
+        firestore.collection('lists').doc(listId).update({
+            listName: newName
+        }).then(() => {
+            dispatch({ type: 'UPDATE_LIST' });
         })
     }
 }

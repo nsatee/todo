@@ -29,6 +29,7 @@ class CreateList extends Component {
                             onChange={(e) => this.setState(
                                 { listName: e.target.value }
                             )}
+                            autoFocus
                         />
                         <div className="create-action">
                             <a href="/" className="no" onClick={(e) => {e.preventDefault(); this.props.pop()}}><FiX />close</a>
