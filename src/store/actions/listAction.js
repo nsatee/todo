@@ -64,3 +64,12 @@ export const updateList = (listId, newName) => {
         })
     }
 }
+
+export const deleteItem = (itemId) => {
+    return (dispatch, getState, { getFirestore }) => {
+        const firestore = getFirestore();
+        firestore.collection('items').doc(itemId).delete().then(() => {
+            dispatch({ type: "DELETE_ITEM" });
+        })
+    }
+}

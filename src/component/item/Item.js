@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { checkItem } from '../../store/actions/listAction'
+import { checkItem, deleteItem } from '../../store/actions/listAction'
 import { connect } from 'react-redux';
 import { FiX } from 'react-icons/fi'
 
@@ -8,7 +8,7 @@ class Item extends Component {
         return (
             <li className={`item ${this.props.isDone ? "done" : "notdone"}`}>
                 <div className="delete-icon">
-                    <button className="icon">
+                    <button className="icon" onClick={() => this.props.deleteItem(this.props.itemId)}>
                         <FiX />
                         <span>delete</span>
                     </button>
@@ -30,7 +30,10 @@ class Item extends Component {
 }
 
 const mapDispatchtoProps = dispatch => {
-    return { checkToggle: (itemId, status) => dispatch(checkItem(itemId, status)) }
+    return { 
+        checkToggle: (itemId, status) => dispatch(checkItem(itemId, status)),
+        deleteItem: (itemId) => dispatch(deleteItem(itemId))
+    }
 }
 
 export default connect(null, mapDispatchtoProps)(Item);
