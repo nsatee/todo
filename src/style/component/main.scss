@@ -28,9 +28,9 @@
         button {
             margin-top: 10px;
             background: none;
-            transition: .2s;
+            transition: 0.2s;
             &:hover {
-                transform: scale(1.1)
+                transform: scale(1.1);
             }
             &.yes {
                 color: $red;
@@ -52,7 +52,7 @@
         }
 
         button {
-            font-size: .3em;
+            font-size: 0.3em;
         }
     }
 
@@ -66,7 +66,7 @@
 
             .date {
                 color: rgba(0, 0, 0, 0.4);
-                font-size: .55em;
+                font-size: 0.55em;
                 margin-top: 5px;
             }
         }
@@ -110,7 +110,7 @@
             right: 0;
             background: white;
             min-width: 90px;
-        
+
             .dropdown-list {
                 display: block;
                 border-bottom: 1px solid $opa-black;
@@ -118,7 +118,7 @@
                 &:last-child {
                     border: 0;
                 }
-        
+
                 button {
                     font-size: 14px;
                     padding: 10px;
@@ -231,6 +231,54 @@
 
     .item {
         margin-bottom: 15px;
+        position: relative;
+
+        &:hover {
+            .delete-icon {
+                display: block;
+            }
+        }
+
+        .delete-icon {
+            position: absolute;
+            top: -3px;
+            right: 10px;
+            top: -5px;
+            display: none;
+
+            button {
+                background: $yellow;
+                height: 25px;
+                min-width: 25px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                color: white;
+                border-radius: 50px;
+                padding: 4px;
+                font-size: 18px;
+                overflow: hidden;
+
+                span {
+                    font-size: 10px;
+                    position: relative;
+                    width: 40px;
+                    margin-right: -40px;
+                    transition: all .2s;
+                    opacity: 0;
+                }
+
+                &:hover {
+                    background: $red;
+
+                    span {
+                        margin-right: 0px;
+                        transition: all .2s;
+                        opacity: 1;
+                    }
+                }
+            }
+        }
 
         a {
             border: 2px solid $pink;
@@ -241,7 +289,7 @@
             color: $pink;
             display: flex;
             align-items: center;
-            
+            transition: .1s;
 
             //checkbox inside of item
             .checkbox {
@@ -249,9 +297,9 @@
                 height: 20px;
                 border-radius: 50%;
                 display: flex;
-                background: white;
                 margin-right: 10px;
                 align-items: center;
+                background: white;
                 justify-content: center;
                 border: 2px solid $pink;
 
@@ -259,8 +307,8 @@
                     display: block;
                     width: 15px;
                     height: 15px;
-                    border-radius: 50%;
                     border: 2px solid white;
+                    border-radius: 50%;
                     background: $pink;
                 }
             }
