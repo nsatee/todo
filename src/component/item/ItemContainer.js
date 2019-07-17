@@ -32,7 +32,7 @@ class ItemContainer extends Component {
                         <button className={`show-done  ${this.state.filter === 'done' ? 'active' : ''}`} onClick={() => this.setState({ filter: "done" })}>Completing</button>
                         <button className={`show-notdone  ${this.state.filter === 'notdone' ? 'active' : ''}`} onClick={() => this.setState({ filter: "notdone" })}>Completed</button>
                     </div>
-                    <button className={`add ${this.props.selectedList !== null}`}
+                    <button className={`add add-button ${this.props.selectedList !== null}`}
                         onClick={() => {
                             this.props.selectedList !== null && this.setState({ addNewItemPop: true })
                         }}><FiPlus /></button>
@@ -44,9 +44,10 @@ class ItemContainer extends Component {
                                         placeholder="New item"
                                         onChange={(e) => this.setState({ itemInput: e.target.value })}
                                         value={this.state.itemInput}
+                                        pattern="[A-Za-z0-9]{1,20}"
                                         autoFocus
                                     />
-                                    <div className="add-action">
+                                    <div className="add-action decision-btn">
                                         <span className="no"
                                             onClick={(e) => {
                                                 e.preventDefault();

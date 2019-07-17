@@ -1,43 +1,59 @@
 import React, { Component } from 'react';
 import { createList } from '../../store/actions/listAction'
-import { FiPlus, FiX } from "react-icons/fi";
+import { FiX, FiCheck } from "react-icons/fi";
 import { connect } from 'react-redux';
 
 class CreateList extends Component {
     state = {
         listName: ""
     }
+
     handleCreateList = (e) => {
         e.preventDefault();
         this.props.createList({
             listName: this.state.listName,
             creator: this.props.authInfo.uid
         });
-        this.props.pop();
+        this.setState({ listName: "" });
+        this.props.toggleActive();
     }
 
     render() {
         return (
-            <div className="create-list">
-                <div className="fade-cover"></div>
-                <div className="create-list_wrapper">
-                    <h1 className="header">Create</h1>
-                    <form className="create-input" onSubmit={(e) => this.handleCreateList(e)}>
-                        <input type="text"
-                            className="list-title"
-                            placeholder="List name"
-                            onChange={(e) => this.setState(
-                                { listName: e.target.value }
-                            )}
-                            autoFocus
-                        />
-                        <div className="create-action">
-                            <a href="/" className="no" onClick={(e) => {e.preventDefault(); this.props.pop()}}><FiX />close</a>
-                            <button type="submit" className="yes"><FiPlus />create</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
+            <li className="list new-list-container">
+                <a
+                    className={`new-list-wrapper ${
+                        this.props.active ? "active" : ""
+                        }`}
+                >
+                    <div className="info">
+                        <form className="new-list-form" onSubmit={(e) => this.handleCreateList(e)}>
+                            <input 
+                                type="text" 
+                                className="new-list" 
+                                placeholder="List title" 
+                                onChange={
+                                    (e) => this.setState({ listName: e.target.value })
+                                    } 
+                                value={this.state.listName} 
+                                pattern="[A-Za-z0-9]{1,20}"
+                            />
+
+                            <div className="new-list-action decision-btn">
+                                <span className="no"
+                                    onClick={(e) => {
+                                        e.preventDefault();
+                                        this.props.toggleActive();
+                                    }}
+                                >
+                                    <FiX />
+                                </span>
+                                <button className="yes" type="submit"><FiCheck /></button>
+                            </div>
+                        </form>
+                    </div>
+                </a>
+            </li>
         );
     }
 }

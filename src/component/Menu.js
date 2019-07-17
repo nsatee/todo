@@ -13,7 +13,7 @@ class Menu extends Component {
                     <span><FiUnderline /></span>
                 </a>
                 <ul className="menu">
-                    <li className="create"><a href="/" onClick={(e) => { e.preventDefault(); this.props.pop() }}><FiList /><span>Create</span></a></li>
+                    {/* <li className="create"><a href="/" onClick={(e) => { e.preventDefault(); this.props.pop() }}><FiList /><span>Create</span></a></li> */}
                     <li className="profile">
                         <a href="/" onClick={(e)=>e.preventDefault()}>
                             <span>{this.props.profile.username[0].toUpperCase()}</span>

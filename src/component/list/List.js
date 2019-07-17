@@ -13,7 +13,6 @@ class List extends Component {
         title: this.props.listTitle
     }
     render() {
-        console.log(this.props);
         return (
             <li className="list">
                 {this.state.pop && this.state.type === "delete" && this.state.activeId === this.props.listId?
