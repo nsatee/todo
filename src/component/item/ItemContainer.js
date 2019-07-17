@@ -39,7 +39,7 @@ class ItemContainer extends Component {
                     {
                         this.state.addNewItemPop ? (
                             <div className="add-item-input">
-                                <form class="add-item-form" onSubmit={(e) => this.handleCreatingItem(e)}>
+                                <form className="add-item-form" onSubmit={(e) => this.handleCreatingItem(e)}>
                                     <input type="text"
                                         placeholder="New item"
                                         onChange={(e) => this.setState({ itemInput: e.target.value })}

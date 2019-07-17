@@ -19,18 +19,24 @@ class Main extends Component {
     }
 
     handleSelectedList = (listId) => {
-        this.setState({ selectedList: listId});
+        this.setState({ selectedList: listId });
     }
 
 
     render() {
         const { notSignedIn, authInfo, profile } = this.props;
-        if (!profile.isLoaded) return <h1>Loading</h1>
+        if (!profile.isLoaded) { 
+            return (
+                <div className="loading" style={{display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100vw', height: '100vh'}}>
+                    <h1>LOADING</h1>
+                </div>
+            ) 
+        }
 
         return (
             <BrowserRouter>
                 <div className="main">
-                    <Navigation notSignedIn={notSignedIn} authInfo={authInfo} pop={this.createListPopHandler} profile={profile}/>
+                    <Navigation notSignedIn={notSignedIn} authInfo={authInfo} pop={this.createListPopHandler} profile={profile} />
                     {notSignedIn ? (
                         <div className="wrapper main-wrapper">
                             <Auth />
@@ -38,8 +44,8 @@ class Main extends Component {
                     ) : (
                             <div className="wrapper main-wrapper">
                                 {this.state.createListPop ? <CreateList pop={this.createListPopHandler} authInfo={authInfo} /> : null}
-                                <ListContainer handleSelectedList={this.handleSelectedList}/>
-                                <ItemContainer selectedList={this.state.selectedList}/>
+                                <ListContainer handleSelectedList={this.handleSelectedList} />
+                                <ItemContainer selectedList={this.state.selectedList} />
                             </div>
 
                         )}
