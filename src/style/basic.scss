@@ -64,14 +64,9 @@ input {
     justify-content: center;
     align-items: center;
 
-    &:hover {
+    &:hover:not(.invalid) {
         color: white;
         background: $green;
-    }
-
-    &.false {
-        opacity: 0.5;
-        cursor: inherit;
     }
 }
 
@@ -92,11 +87,15 @@ input {
         border-radius: 50%;
         cursor: pointer;
 
+        &.invalid {
+            cursor: default;
+        }
+
         &.yes {
             border: 2px solid $green;
             color: $green;
 
-            &:hover {
+            &:hover:not(.invalid) {
                 color: white;
                 background: $green;
             }
@@ -106,11 +105,16 @@ input {
             border: 2px solid $red;
             color: $red;
 
-            &:hover {
+            &:hover:not(.invalid) {
                 color: white;
                 background: $red;
             }
         }
     }
+}
+
+.invalid {
+    opacity: .3;
+    cursor: default;
 }
 

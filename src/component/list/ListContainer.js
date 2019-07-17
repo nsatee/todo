@@ -2,14 +2,14 @@ import React, { Component } from 'react';
 import List from './List';
 import { connect } from 'react-redux';
 import { FiPlus } from 'react-icons/fi'
-import { firestoreConnect, isLoaded } from 'react-redux-firebase';
+import { firestoreConnect } from 'react-redux-firebase';
 import { compose } from 'redux';
 import CreateList from '../createList/CreateList';
 
 class ListContainer extends Component {
     state = {
         selectedItem: null,
-        newListActive: false
+        newListActive: this.props.listInfo
     }
 
     selectedItem = (listId) => {
@@ -18,27 +18,35 @@ class ListContainer extends Component {
     }
 
     handleNewList = () => {
-        this.setState({newListActive: !this.state.newListActive})
+        this.setState({ newListActive: !this.state.newListActive })
     }
+
+    // componentDidUpdate(prevProps, prevState) {
+    //     if (prevProps.lists.length !== this.props.lists.length 
+    //         && this.state.newListActive) {
+                     
+    //     }
+    // }
 
     render() {
         const { lists } = this.props;
+        // console.log(this.props);
         return (
             <div className="section list-container">
                 <div className="header-wrapper">
                     <h1 className="main-header">List</h1>
                     <button className="add-button"
                         onClick={() => {
-                            document.querySelector('.list-content').scrollIntoView({block: 'start', behavior: 'smooth'});
+                            document.querySelector('.list-content').scrollIntoView({ block: 'start', behavior: 'smooth' });
                             document.querySelector('.new-list').focus();
-                            this.setState({newListActive: true})
+                            this.setState({ newListActive: true })
                         }}
                     >
                         <FiPlus />
                     </button>
                 </div>
                 <ul className="list-content">
-                    <CreateList active={this.state.newListActive} toggleActive={this.handleNewList} authInfo={this.props.auth}/>
+                    <CreateList active={this.state.newListActive} toggleActive={this.handleNewList} authInfo={this.props.auth} />
                     {
                         lists.map(
                             list => <List
@@ -49,7 +57,9 @@ class ListContainer extends Component {
                                 selected={
                                     list.id === this.state.selectedItem
                                 }
-                                selectedItem={this.selectedItem} />
+                                selectedItem={this.selectedItem}
+                            />
+
                         )
                     }
                 </ul>
@@ -58,10 +68,11 @@ class ListContainer extends Component {
     }
 }
 
-const mapStateToProps = ({ firebase: { auth }, firestore: { ordered } }) => {
+const mapStateToProps = ({ firebase: { auth }, firestore: { ordered }, lists }) => {
     return {
         auth,
         lists: ordered.lists || [],
+        listInfo: lists.isLoaded
     }
 }
 

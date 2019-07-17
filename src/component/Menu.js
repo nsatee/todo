@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { FiUnderline, FiList } from "react-icons/fi";
+import { FiUnderline } from "react-icons/fi";
 import { connect } from 'react-redux';
 import { signOut } from '../store/actions/authAction';
 import { withRouter } from 'react-router-dom';

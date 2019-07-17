@@ -49,6 +49,10 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
+const mapStateToProps = ({auth}) => {
+    return {auth}
+}
 
 
-export default connect(null, mapDispatchToProps)(Auth);
+
+export default connect(mapStateToProps, mapDispatchToProps)(Auth);

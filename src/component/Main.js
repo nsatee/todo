@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import Navigation from './Navigation';
 import ListContainer from './list/ListContainer';
 import ItemContainer from './item/ItemContainer';
 import Auth from './Auth';
-import CreateList from './createList/CreateList';
 
 class Main extends Component {
     state = {
@@ -23,7 +21,7 @@ class Main extends Component {
 
 
     render() {
-        const { notSignedIn, authInfo, profile } = this.props;
+        const { notSignedIn } = this.props;
         return (
             <div className="main">
                 {notSignedIn ? (

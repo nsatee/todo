@@ -23,8 +23,9 @@ class List extends Component {
                                 <button className="no" onClick={() => this.setState({pop: false})}>Cancle</button>
                                 <button className="yes" 
                                     onClick={() => {
-                                        this.setState({pop: false, type: ""})
-                                        this.props.deleteList(this.props.listId)
+                                        this.setState({pop: false, type: ""});
+                                        this.props.deleteList(this.props.listId);
+                                        this.props.selectedItem(null);
                                     }}
                                     >
                                         Delete
@@ -51,13 +52,21 @@ class List extends Component {
                         </div>
                     </div>) : null}
                 
-                <a className={
-                    this.props.selected ? "selected" : ""}
-                    onClick={() => this.props.selectedItem(this.props.listId)}>
+                <a href="/" className={`list-wrapper ${
+                    this.props.selected ? 
+                        "selected" : ""
+                    }`}
+                    onClick={(e) => {
+                        e.preventDefault();
+                        this.props.selectedItem(this.props.listId)
+                        }
+                    }
+                >
                     <div className="info">
                         <span className="title">{this.props.listTitle}</span>
                         <span className="date">{moment(this.props.date).fromNow()}</span>
                     </div>
+
                     <div className="actions">
                         <span className="icon" onClick={(e) => { e.preventDefault(); this.setState({ showAction: !this.state.showAction, activeId: this.props.listId }) }}>
                             <FiMoreVertical />
@@ -75,6 +84,7 @@ class List extends Component {
                             ) : null
                         }
                     </div>
+                    
                 </a>
             </li>
         )

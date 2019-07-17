@@ -5,42 +5,54 @@ import { connect } from 'react-redux';
 
 class CreateList extends Component {
     state = {
-        listName: ""
+        listName: "",
+        isValid: false
     }
 
     handleCreateList = (e) => {
         e.preventDefault();
-        this.props.createList({
-            listName: this.state.listName,
-            creator: this.props.authInfo.uid
-        });
-        this.setState({ listName: "" });
-        this.props.toggleActive();
+
+        if (this.state.isValid) {
+            this.props.createList({
+                listName: this.state.listName,
+                creator: this.props.authInfo.uid
+            });
+            this.setState({ listName: "", isValid: false });
+            this.props.toggleActive();
+        }
+
+        return;
     }
 
     render() {
         return (
             <li className="list new-list-container">
-                <a
-                    className={`new-list-wrapper ${
+                <div
+                    className={`new-list-wrapper list-wrapper ${
                         this.props.active ? "active" : ""
                         }`}
                 >
                     <div className="info">
                         <form className="new-list-form" onSubmit={(e) => this.handleCreateList(e)}>
-                            <input 
-                                type="text" 
-                                className="new-list" 
-                                placeholder="List title" 
+                            <input
+                                type="text"
+                                className="new-list"
+                                placeholder="List title"
+                                name="list-name"
                                 onChange={
-                                    (e) => this.setState({ listName: e.target.value })
-                                    } 
-                                value={this.state.listName} 
-                                pattern="[A-Za-z0-9]{1,20}"
+                                    (e) => {
+                                        e.target.value.trim().length > 0 ?
+                                            this.setState({ isValid: true }) :
+                                            this.setState({ isValid: false });
+
+                                        this.setState({ listName: e.target.value });
+                                    }
+                                }
+                                value={this.state.listName}
                             />
 
                             <div className="new-list-action decision-btn">
-                                <span className="no"
+                                <span className={`no`}
                                     onClick={(e) => {
                                         e.preventDefault();
                                         this.props.toggleActive();
@@ -48,11 +60,11 @@ class CreateList extends Component {
                                 >
                                     <FiX />
                                 </span>
-                                <button className="yes" type="submit"><FiCheck /></button>
+                                <button className={`yes ${this.state.isValid ? "" : "invalid"}`} type="submit"><FiCheck /></button>
                             </div>
                         </form>
                     </div>
-                </a>
+                </div>
             </li>
         );
     }

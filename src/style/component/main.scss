@@ -34,7 +34,7 @@
     //create list
     .new-list-container {
         .new-list-wrapper,
-        a {
+        .list-wrapper {
             background: white !important;
             cursor: inherit;
             height: 95px;
@@ -136,7 +136,7 @@
         position: relative;
     }
 
-    .list a {
+    .list .list-wrapper {
         color: $black;
         font-size: 1.3em;
         width: 100%;
