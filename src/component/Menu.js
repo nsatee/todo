@@ -4,14 +4,15 @@ import { connect } from 'react-redux';
 import { signOut } from '../store/actions/authAction';
 import { withRouter } from 'react-router-dom';
 import {compose} from 'redux';
+import {Link} from 'react-router-dom';
 
 class Menu extends Component {
     render() {
         return (
             <div className="wrapper">
-                <a href="/" className="logo-wrapper">
+                <Link to="/" className="logo-wrapper">
                     <span><FiUnderline /></span>
-                </a>
+                </Link>
                 <ul className="menu">
                     {/* <li className="create"><a href="/" onClick={(e) => { e.preventDefault(); this.props.pop() }}><FiList /><span>Create</span></a></li> */}
                     <li className="profile">

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './style/root.scss';
 import Main from './component/Main';
 
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Navigation from './component/Navigation';
 
@@ -32,7 +32,9 @@ class App extends Component {
             <BrowserRouter>
                 <div className="App">
                     <Navigation notSignedIn={notSignedIn} authInfo={authInfo} pop={this.createListPopHandler} profile={profile} />
-                    <Main />
+                    <Switch>
+                        <Route path="/" component={Main} />
+                    </Switch>
                 </div>
             </BrowserRouter>
         );

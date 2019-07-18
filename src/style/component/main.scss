@@ -41,7 +41,7 @@
             display: flex;
             align-items: center;
             margin-top: -95px;
-            transition: .2s;
+            transition: 0.2s;
 
             &.active {
                 margin-top: 0;
@@ -52,7 +52,7 @@
             form {
                 width: 100%;
                 display: flex;
-                
+
                 input {
                     width: 100%;
                     box-sizing: border-box;
@@ -72,7 +72,8 @@
     }
     //create list end
 
-    .delete-confirm {
+    .delete-confirm,
+    .edit-list {
         width: 100%;
         height: 100%;
         background: white;
@@ -84,21 +85,27 @@
         z-index: 999;
         text-align: center;
         padding: 20px;
+        width: 100%;
 
-        button {
-            margin-top: 10px;
-            background: none;
-            transition: 0.2s;
-            &:hover {
-                transform: scale(1.1);
-            }
-            &.yes {
-                color: $red;
-            }
+        .decision-btn {
+            justify-content: center;
+        }
+    }
 
-            &.no {
-                color: $green;
-            }
+    .edit-list {
+        display: flex;
+
+        input {
+            width: 100%;
+            font-size: 1.3em;
+            padding: 0 15px;
+            border: 0;
+        }
+
+        .decision-btn {
+            width: 100px;
+            align-items: center;
+            margin: 0;
         }
     }
 

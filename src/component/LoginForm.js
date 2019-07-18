@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { FiUnderline } from "react-icons/fi";
 import { connect } from 'react-redux';
-import { signIn } from '../store/actions/authAction'
+import { signIn } from '../store/actions/authAction';
+import { Link } from 'react-router-dom';
 
 class LoginForm extends Component {
     state = {
@@ -18,9 +19,9 @@ class LoginForm extends Component {
         return (
             <div className="wrapper">
                 <div className="logo">
-                    <a href="/" className="logo-wrapper">
+                    <Link to="/" className="logo-wrapper">
                         <span><FiUnderline /></span>
-                    </a>
+                    </Link>
                 </div>
                 <form className="login-form" onSubmit={this.handdleSubmit}>
                     <input type="text" placeholder="Email" onChange={(e) => this.setState({ email: e.target.value })} value={this.state.email} />

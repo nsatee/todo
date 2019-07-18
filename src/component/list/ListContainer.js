@@ -21,12 +21,11 @@ class ListContainer extends Component {
         this.setState({ newListActive: !this.state.newListActive })
     }
 
-    // componentDidUpdate(prevProps, prevState) {
-    //     if (prevProps.lists.length !== this.props.lists.length 
-    //         && this.state.newListActive) {
-                     
-    //     }
-    // }
+    handleAddPanel = () => {
+        document.querySelector('.list-content').scrollIntoView({ block: 'start', behavior: 'smooth' });
+        document.querySelector('.new-list').focus();
+        this.setState({ newListActive: true })
+    }
 
     render() {
         const { lists } = this.props;
@@ -36,18 +35,21 @@ class ListContainer extends Component {
                 <div className="header-wrapper">
                     <h1 className="main-header">List</h1>
                     <button className="add-button"
-                        onClick={() => {
-                            document.querySelector('.list-content').scrollIntoView({ block: 'start', behavior: 'smooth' });
-                            document.querySelector('.new-list').focus();
-                            this.setState({ newListActive: true })
-                        }}
+                        onClick={this.handleAddPanel}
                     >
                         <FiPlus />
                     </button>
                 </div>
                 <ul className="list-content">
-                    <CreateList active={this.state.newListActive} toggleActive={this.handleNewList} authInfo={this.props.auth} />
+                    <CreateList 
+                        active={this.state.newListActive} 
+                        toggleActive={this.handleNewList} 
+                        authInfo={this.props.auth} 
+                    />
+
+
                     {
+                        //render lists
                         lists.map(
                             list => <List
                                 key={list.id}
