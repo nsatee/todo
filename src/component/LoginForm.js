@@ -19,7 +19,6 @@ class LoginForm extends Component {
         return (
             <div className="wrapper">
                 <div className="logo">
-                    <Link to="/" className="logo-wrapper">
                         <span><FiUnderline /></span>
                     </Link>
                 </div>
