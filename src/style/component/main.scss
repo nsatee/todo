@@ -33,6 +33,7 @@
 
     //create list
     .new-list-container {
+    
         .new-list-wrapper,
         .list-wrapper {
             background: white !important;
@@ -45,6 +46,10 @@
 
             &.active {
                 margin-top: 0;
+            }
+
+            input {
+                border-radius: 0;
             }
         }
         .info {
@@ -327,9 +332,8 @@
 
                 .check {
                     display: block;
-                    width: 15px;
-                    height: 15px;
-                    border: 2px solid white;
+                    width: 10px;
+                    height: 10px;
                     border-radius: 50%;
                     background: $pink;
                 }
