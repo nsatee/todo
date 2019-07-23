@@ -2,7 +2,7 @@ nav {
     border-bottom: 1px solid $opa-black;
     position: fixed;
     width: 100%;
-    background: white;
+    background: $black;
     z-index: 999;
 
     .wrapper {
@@ -16,6 +16,7 @@ nav {
     .logo {
         font-size: 40px;
         margin-top: 5px;
+        color: $blue;
     }
 
     .logo-wrapper {
@@ -62,18 +63,17 @@ nav {
             &.profile > a {
                 width: 45px;
                 height: 45px;
-
-                background: white;
-                color: $pink;
+                font-weight: bold;
+                color: $green;
                 display: flex;
                 justify-content: center;
                 align-items: center;
                 border-radius: 50%;
                 margin-left: 20px;
-                border: 2px solid $pink;
+                border: 2px solid $green;
 
                 &:hover {
-                    background: $pink;
+                    background: $green;
                     color: white;
                 }
             }

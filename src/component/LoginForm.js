@@ -17,18 +17,14 @@ class LoginForm extends Component {
 
     render() {
         return (
-            <div className="wrapper">
-                <div className="logo">
-                    <Link className="logo" to="/">
-                        <span><FiUnderline /></span>
-                    </Link>
-                </div>
-                <form className="login-form" onSubmit={this.handdleSubmit}>
-                    <input type="text" placeholder="Email" onChange={(e) => this.setState({ email: e.target.value })} value={this.state.email} />
-                    <input type="password" placeholder="Password" onChange={(e) => this.setState({ password: e.target.value })} value={this.state.password} />
-                    <button type="submit" className="btn btn-green">Signin</button>
-                </form>
-            </div >
+
+
+            <form className="login-form" onSubmit={this.handdleSubmit}>
+                <input type="text" placeholder="Email" onChange={(e) => this.setState({ email: e.target.value })} value={this.state.email} />
+                <input type="password" placeholder="Password" onChange={(e) => this.setState({ password: e.target.value })} value={this.state.password} />
+                <button type="submit" className="btn btn-green">Signin</button>
+            </form>
+
         )
     }
 }

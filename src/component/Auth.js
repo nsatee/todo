@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import {connect} from 'react-redux';
+import Helmet from 'react-helmet';
+import { connect } from 'react-redux';
 import { signUp } from '../store/actions/authAction';
 
 class Auth extends Component {
@@ -21,9 +22,14 @@ class Auth extends Component {
         console.log(this.state);
         this.props.signUp(this.state);
     }
+
+
     render() {
         return (
             <div className="auth">
+                <Helmet>
+                    <title>Udo</title>
+                </Helmet>
                 <div className="section auth-logo">
                     <h1 className="auth-logo_wrapper">
                         simpler with <br /><span>Udo</span>
@@ -50,8 +56,8 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-const mapStateToProps = ({auth}) => {
-    return {auth}
+const mapStateToProps = ({ auth }) => {
+    return { auth }
 }
 
 
