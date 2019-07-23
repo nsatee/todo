@@ -8,7 +8,7 @@ const Navigation = (props) => {
     return (
         <nav>
             <div className="wrapper">
-                <div className="logo">
+                <div className="logo-wrapper">
                     <Link className="logo" to="/" style={{ fontWeight: 'lighter' }}>
                         <span style={{ fontSize: '0.8em' }}><FiUnderline /></span><span>Do</span>
                     </Link>

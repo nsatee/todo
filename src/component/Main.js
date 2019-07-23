@@ -26,6 +26,7 @@ class Main extends Component {
             <div className="main">
                 {notSignedIn ? (
                     <div className="wrapper main-wrapper">
+                        
                         <Auth />
                     </div>
                 ) : (

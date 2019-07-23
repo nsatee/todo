@@ -1,0 +1,23 @@
+.auth {
+    .auth-signup {
+        width: 100%;
+
+        .header {
+            width: 100%;
+            text-align: center;
+        }
+
+        .auth-signup_form {
+            align-items: center;
+
+            button {
+                width: 60vw;
+                margin-top: 20px;
+            }
+        }
+    }
+    .auth-logo {
+        display: none;
+    }
+
+}

@@ -1,0 +1,98 @@
+nav {
+    border: 0;
+    position: relative;
+    .logo {
+        width: 100%;
+    }
+    .wrapper {
+        flex-wrap: wrap;
+        height: auto;
+        justify-content: space-between;
+    }
+}
+
+.login-form {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 30px 0;
+    margin: 0 auto;
+    margin-top: 50%;
+
+    input {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    button {
+        width: 70%;
+    }
+}
+
+.auth {
+    height: auto;
+
+    .auth-signup {
+        min-height: auto;
+        margin: 0;
+        flex-direction: inherit;
+        flex-wrap: wrap;
+        margin-top: 40%;
+
+        .header {
+            display: none;
+        }
+    }
+}
+
+.main-wrapper {
+    padding: 0 !important;
+}
+
+.auth-functions {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    display: block;
+    ul {
+        display: flex;
+        justify-content: space-between;
+
+        li {
+            width: 50%;
+            text-align: center;
+            padding: 30px;
+            border-top: 1px solid $opa-black;
+            font-size: 1.2em;
+            cursor: pointer;
+
+            &:first-child {
+                border-right: 1px solid $opa-black;
+            }
+        }
+    }
+}
+
+.signin {
+    .auth-functions li:first-child {
+        background: $green;
+    }
+
+    .auth-signup {
+        display: none;
+        height: 100%;
+    }
+}
+
+.signup {
+    .auth-functions li:last-child {
+        background: $green;
+    }
+    .login-form {
+        display: none;
+    }
+}
+
+.signedin .main-wrapper {
+    border: 1px solid $opa-black;
+}

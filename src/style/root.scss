@@ -6,3 +6,10 @@
 @import './component/main.scss';
 @import './basic';
 
+@media(max-width: 768px) {
+    @import './w-768/main-768.scss';
+}
+@media(max-width: 580px) {
+    @import './w-580/main-580.scss';
+}
+

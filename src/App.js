@@ -11,7 +11,8 @@ import Navigation from './component/Navigation';
 class App extends Component {
     state = {
         createListPop: false,
-        selectedList: null
+        selectedList: null,
+        selected: "signin"
     }
 
     createListPopHandler = () => {
@@ -30,8 +31,19 @@ class App extends Component {
         }
         return (
             <BrowserRouter>
-                <div className="App">
+                <div className={`App ${this.state.selected} ${notSignedIn ? 'not-signedin' : 'signedin'}`}>
                     <Navigation notSignedIn={notSignedIn} authInfo={authInfo} pop={this.createListPopHandler} profile={profile} />
+                    {notSignedIn && (<div className="auth-functions">
+                        <ul>
+                            <li onClick={() => this.setState({ selected: "signin" })}>
+                                Signin
+                            </li>
+                            <li onClick={() => this.setState({ selected: "signup" })}>
+                                Signup
+                            </li>
+                        </ul>
+                    </div>)}
+
                     <Switch>
                         <Route path="/" component={Main} />
                     </Switch>
