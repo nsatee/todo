@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import List from './List';
 import { connect } from 'react-redux';
-import { FiPlus } from 'react-icons/fi'
+import { FiPlus, FiX } from 'react-icons/fi'
 import { firestoreConnect } from 'react-redux-firebase';
 import { compose } from 'redux';
 import CreateList from '../createList/CreateList';
@@ -33,11 +33,11 @@ class ListContainer extends Component {
             <div className="section list-container">
                 <div className="header-wrapper">
                     <h1 className="main-header">List</h1>
-                    <button className="add-button"
-                        onClick={this.handleAddPanel}
+                    <a href="/" className="add-button"
+                        onClick={(e) => {e.preventDefault(); this.handleAddPanel();}}
                     >
                         <FiPlus />
-                    </button>
+                    </a>
                 </div>
                 <ul className="list-content">
                     <CreateList 
