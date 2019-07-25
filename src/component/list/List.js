@@ -66,24 +66,31 @@ class List extends Component {
                     }`}
                     onClick={(e) => {
                         e.preventDefault();
-                        this.props.selectedItem(this.props.listId)
+                        this.props.selectedItem(this.props.listId, this.props.listTitle);
                     }
                     }
                 >
-                    <div className="info">
+                    <div className="info" onClick={() => this.props.toggleItems(true)}>
                         <span className="title">{this.props.listTitle}</span>
                         <span className="date">{moment(this.props.date).fromNow()}</span>
                     </div>
 
                     <div className="actions">
-                        <span className="icon" onClick={(e) => { e.preventDefault(); this.setState({ showAction: !this.state.showAction, activeId: this.props.listId }) }}>
+                        <span className="icon" onClick={(e) => { 
+                            e.preventDefault(); 
+                            this.setState({ showAction: !this.state.showAction, activeId: this.props.listId });
+                            this.props.toggleItems(false);
+                        }}>
                             <FiMoreVertical />
                         </span>
                         {
                             this.state.showAction && this.props.selected ? (
                                 <ul className="dropdown" onClick={() => this.setState({ showAction: !this.state.showAction })}>
                                     <li className="dropdown-list">
-                                        <button onClick={() => this.setState({ pop: true, type: "edit" })}>Edit</button>
+                                        <button onClick={() => { 
+                                            this.setState({ pop: true, type: "edit" }); 
+                                            }
+                                        }>Edit</button>
                                     </li>
                                     <li className="dropdown-list">
                                         <button className="delete" onClick={() => this.setState({ pop: true, type: "delete" })}>Delete</button>

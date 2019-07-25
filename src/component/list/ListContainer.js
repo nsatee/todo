@@ -12,9 +12,9 @@ class ListContainer extends Component {
         newListActive: this.props.listInfo
     }
 
-    selectedItem = (listId) => {
+    selectedItem = (listId, listName) => {
         this.setState({ selectedItem: listId });
-        this.props.handleSelectedList(listId);
+        this.props.handleSelectedList(listId, listName);
     }
 
     handleNewList = () => {
@@ -29,7 +29,6 @@ class ListContainer extends Component {
 
     render() {
         const { lists } = this.props;
-        // console.log(this.props);
         return (
             <div className="section list-container">
                 <div className="header-wrapper">
@@ -46,8 +45,6 @@ class ListContainer extends Component {
                         toggleActive={this.handleNewList} 
                         authInfo={this.props.auth} 
                     />
-
-
                     {
                         //render lists
                         lists.map(
@@ -60,6 +57,7 @@ class ListContainer extends Component {
                                     list.id === this.state.selectedItem
                                 }
                                 selectedItem={this.selectedItem}
+                                toggleItems={this.props.toggleItems}
                             />
 
                         )

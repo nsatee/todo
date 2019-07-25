@@ -11,6 +11,10 @@ nav {
     }
 }
 
+.list-container .header-wrapper {
+    border-top: 1px solid $opa-black;
+}
+
 .login-form {
     display: flex;
     justify-content: center;
@@ -93,6 +97,7 @@ nav {
     }
 }
 
-.signedin .main-wrapper {
-    border: 1px solid $opa-black;
+.item-container {
+    top: 0;
+    border-top: 0;
 }

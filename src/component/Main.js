@@ -7,33 +7,37 @@ import Auth from './Auth';
 
 class Main extends Component {
     state = {
-        createListPop: false,
-        selectedList: null
+        itemsActive: false,
+        selectedList: null,
+        listName: ""
     }
 
     createListPopHandler = () => {
         this.setState({ createListPop: !this.state.createListPop })
     }
 
-    handleSelectedList = (listId) => {
-        this.setState({ selectedList: listId });
+    handleSelectedList = (listId, listName) => {
+        this.setState({ selectedList: listId, listName });
     }
 
+    handleMobileLayout = (actionBool) => {
+        this.setState({itemsActive: actionBool});
+    }
 
     render() {
         const { notSignedIn } = this.props;
+        console.log(this.state.listName);
         return (
             <div className="main">
                 {notSignedIn ? (
                     <div className="wrapper main-wrapper">
-                        
+
                         <Auth />
                     </div>
                 ) : (
-                        <div className="wrapper main-wrapper">
-                            {/* {this.state.createListPop ? <CreateList pop={this.createListPopHandler} authInfo={authInfo} /> : null} */}
-                            <ListContainer handleSelectedList={this.handleSelectedList} />
-                            <ItemContainer selectedList={this.state.selectedList} />
+                        <div className={`wrapper main-wrapper ${this.state.itemsActive ? 'show-items' : ''}`}>
+                            <ListContainer handleSelectedList={this.handleSelectedList} toggleItems={this.handleMobileLayout}/>
+                            <ItemContainer selectedList={this.state.selectedList} listName={this.state.listName} toggleItems={this.handleMobileLayout}/>
                         </div>
 
                     )}

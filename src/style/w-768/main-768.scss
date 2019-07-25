@@ -19,5 +19,80 @@
     .auth-logo {
         display: none;
     }
+}
 
+.main-wrapper {
+    display: block;
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+
+    & > .section {
+        width: 100%;
+    }
+
+    & > .section:last-child {
+        position: absolute;
+        width: 100%;
+    }
+}
+
+.main-wrapper > .section {
+    border-left: 0;
+    border-right: 0;
+}
+
+.list-container .list-content .info {
+    width: 100%;
+    padding: 30px 20px;
+}
+
+.list-container .list .list-wrapper {
+    padding: 0;
+    align-items: center;
+}
+
+.item-container {
+    background: $black;
+    top: 70px;
+    left: 100vw;
+    border-left: 1px solid $opa-black;
+    border-top: 1px solid $opa-black;
+    width: 100vw !important;
+    transition: 0.2s;
+}
+
+.show-items {
+    .item-container {
+        left: 0;
+        z-index: 999;
+        overflow: scroll;
+
+        .delete-icon {
+            display: block;
+        }
+    }
+}
+
+
+.list-container .list .list-wrapper:hover,
+.list-container .list .list-wrapper.selected {
+    background: $black;
+}
+
+.list-header {
+    margin-bottom: 30px;
+    display: block;
+    cursor: pointer;
+    h1 {
+        font-size: 18px;
+        font-weight: lighter;
+        display: flex;
+        align-items: center;
+        color: $blue;
+        
+        svg {
+            margin-right: 5px;
+        }
+    }
 }

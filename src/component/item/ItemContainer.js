@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { FiCheck, FiX, FiPlus } from "react-icons/fi";
+import { FiCheck, FiX, FiPlus, FiChevronLeft } from "react-icons/fi";
 import Item from './Item';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
@@ -11,7 +11,7 @@ class ItemContainer extends Component {
         addNewItemPop: false,
         itemInput: "",
         filter: "all",
-        isValid: false
+        isValid: null,
     }
 
     handleCreatingItem = (e) => {
@@ -29,7 +29,7 @@ class ItemContainer extends Component {
 
     render() {
         return (
-            <div className={`section item-container ${this.state.filter}`}>
+            <div className={`section item-container ${this.state.filter} ${this.state.isValid === null ? "show" : ""}`}>
                 <div className="item-action">
                     <div className="show-action">
                         <button className={`show-all ${this.state.filter === 'all' ? 'active' : ''}`} onClick={() => this.setState({ filter: "all" })}>All</button>
@@ -71,6 +71,12 @@ class ItemContainer extends Component {
                     }
                 </div>
                 <ul className="item-content">
+                    <li 
+                        className={`list-header`}
+                        onClick={() => {this.props.toggleItems(false)}}
+                    >
+                        <h1><FiChevronLeft />{this.props.listName}</h1>
+                    </li>
                     {this.props.items.map(item => <Item isDone={item.isDone} itemTitle={item.itemContent} key={item.id} itemId={item.id} />)}
                 </ul>
             </div>
@@ -85,10 +91,11 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-const mapStateToProps = ({ firebase: { auth }, firestore: { ordered } }) => {
+const mapStateToProps = ({ firebase: { auth }, firestore: { ordered }, lists }) => {
     return {
         auth,
         items: ordered.items || [],
+        lists
     }
 }
 
