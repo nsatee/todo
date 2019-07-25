@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import moment from 'moment';
 import { FiMoreVertical } from "react-icons/fi";
+import { MdCheck } from "react-icons/md";
 import { deleteList, updateList } from '../../store/actions/listAction';
 import { connect } from 'react-redux';
 import { FiX, FiCheck } from "react-icons/fi";
@@ -37,7 +38,7 @@ class List extends Component {
                             <div className="decision-btn">
                                 <span className="no" onClick={() => this.setState({ pop: false })}><FiX /></span>
                                 <button className="yes" type="submit">
-                                    <FiCheck />
+                                    <MdCheck />
                                 </button>
                             </div>
                         </form>
@@ -55,7 +56,7 @@ class List extends Component {
                                 >
                                     <FiX />
                                 </span>
-                                <button className="yes" type="submit"><FiCheck /></button>
+                                <button className="yes" type="submit"><MdCheck /></button>
                             </div>
                         </form>
                     </div>) : null}

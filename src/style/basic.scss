@@ -72,6 +72,7 @@ input {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-shrink: 0;
 
     &:hover:not(.invalid) {
         color: white;
